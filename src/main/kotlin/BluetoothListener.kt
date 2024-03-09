@@ -25,7 +25,7 @@ class BluetoothListener: BlueFalconDelegate {
 
     override fun didDisconnect(bluetoothPeripheral: BluetoothPeripheral) {
         println("Peripheral did disconnect: ${bluetoothPeripheral.name}")
-        devices.remove(bluetoothPeripheral)
+        //devices.remove(bluetoothPeripheral)
     }
 
     override fun didDiscoverCharacteristics(bluetoothPeripheral: BluetoothPeripheral) {
@@ -49,10 +49,10 @@ class BluetoothListener: BlueFalconDelegate {
         }
         println(message)
 
-        devices.add(bluetoothPeripheral)
-        println("Connecting to device...")
-        blueFalcon.connect(bluetoothPeripheral, autoConnect = true)
-        println("Connected to device")
+//        devices.add(bluetoothPeripheral)
+//        println("Connecting to device...")
+//        blueFalcon.connect(bluetoothPeripheral, autoConnect = true)
+//        println("Connected to device")
     }
 
     override fun didDiscoverServices(bluetoothPeripheral: BluetoothPeripheral) {

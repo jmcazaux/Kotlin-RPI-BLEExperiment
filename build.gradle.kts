@@ -1,8 +1,11 @@
+import groovy.xml.dom.DOMCategory.attributes
 import org.jetbrains.kotlin.cli.jvm.compiler.findMainClass
 
 plugins {
-    kotlin("jvm") version "1.9.0"
+    kotlin("jvm") version "1.9.22"
     application
+    java
+    id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
 group = "com.ironbird"
@@ -28,6 +31,13 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
 }
+
+tasks.withType<Jar> {
+    manifest {
+        attributes["Main-Class"] = "com.ironbird.Main"
+    }
+}
+
 kotlin {
     jvmToolchain(17)
 }
@@ -35,3 +45,4 @@ kotlin {
 application {
     mainClass = "com.ironbird.Main"
 }
+

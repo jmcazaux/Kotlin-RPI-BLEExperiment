@@ -2,6 +2,7 @@ package com.ironbird
 
 import AdvertisementDataRetrievalKeys
 import dev.bluefalcon.*
+import java.net.Authenticator
 
 class BluetoothListener: BlueFalconDelegate {
 
@@ -25,7 +26,7 @@ class BluetoothListener: BlueFalconDelegate {
 
     override fun didDisconnect(bluetoothPeripheral: BluetoothPeripheral) {
         println("Peripheral did disconnect: ${bluetoothPeripheral.name}")
-        //devices.remove(bluetoothPeripheral)
+        devices.remove(bluetoothPeripheral)
     }
 
     override fun didDiscoverCharacteristics(bluetoothPeripheral: BluetoothPeripheral) {
@@ -43,21 +44,30 @@ class BluetoothListener: BlueFalconDelegate {
         bluetoothPeripheral: BluetoothPeripheral,
         advertisementData: Map<AdvertisementDataRetrievalKeys, Any>
     ) {
-        var message = "Did discover device: ${bluetoothPeripheral.name}:\n"
-        advertisementData.forEach {
-            message += "   ${it.key} -> ${it.value}\n"
-        }
-        println(message)
 
-//        devices.add(bluetoothPeripheral)
-//        println("Connecting to device...")
-//        blueFalcon.connect(bluetoothPeripheral, autoConnect = true)
-//        println("Connected to device")
+        val peripheralName = bluetoothPeripheral.name ?: return
+
+        if (peripheralName.isEmpty())
+            return
+
+        if (peripheralName.startsWith("S4") || peripheralName.endsWith("HRM")) {
+
+            var message = "Did discover S4 or HRM: ${bluetoothPeripheral.name}:\n"
+            advertisementData.forEach {
+                message += "   ${it.key} -> ${it.value}\n"
+            }
+            println(message)
+
+            devices.add(bluetoothPeripheral)
+            println("Connecting to device...")
+            blueFalcon.connect(bluetoothPeripheral, autoConnect = true)
+            println("Connected to device")
+        }
     }
 
     override fun didDiscoverServices(bluetoothPeripheral: BluetoothPeripheral) {
         println("Did discover services from: ${bluetoothPeripheral.name} -> " +
-                bluetoothPeripheral.services.joinToString(", ")
+                bluetoothPeripheral.services.map { "${it.name}" }.joinToString(", ")
         )
     }
 

@@ -11,8 +11,11 @@ And to make things more fun, the goal is to use Kotlin!
 ### [Blue-Falcon](https://github.com/Reedyuk/blue-falcon)
 
 Tested on branch `bluefalcon`:
-- Was able to detect devices, though it was a bit strange initially (it did not show any device name).
-- Can connect to the WaterRower
+- ✅ Was able to detect devices, though it was a bit strange initially (it did not show any device name).
+- ✅ Can connect to the WaterRower
+- ✅ Can discover services
+- ❌ Did not succeed reading characteristics / value
+- ❌ Do not get notification when paired device disconnects.
 
 ### [Blessed for Bluez](https://github.com/weliem/blessed-bluez)
 

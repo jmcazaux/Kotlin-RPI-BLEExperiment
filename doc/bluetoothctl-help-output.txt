@@ -1,0 +1,62 @@
+[DEL] Descriptor (Handle 0x0000)
+	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service0050/char0056/desc0058
+	00002902-0000-1000-8000-00805f9b34fb
+	Client Characteristic Configuration
+[DEL] Descriptor (Handle 0x0000)
+	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service0070/char0071/desc0073
+	00002902-0000-1000-8000-00805f9b34fb
+	Client Characteristic Configuration
+[DEL] Characteristic (Handle 0x0000)
+	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service0070/char0071
+	00002a37-0000-1000-8000-00805f9b34fb
+	Heart Rate Measurement
+[DEL] Primary Service (Handle 0x0000)
+	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service0070
+	0000180d-0000-1000-8000-00805f9b34fb
+	Heart Rate
+[DEL] Characteristic (Handle 0x0000)
+	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service0090/char0091
+	00002acc-0000-1000-8000-00805f9b34fb
+	Fitness Machine Feature
+[DEL] Descriptor (Handle 0x0000)
+	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service0090/char0093/desc0095
+	00002902-0000-1000-8000-00805f9b34fb
+	Client Characteristic Configuration
+[DEL] Characteristic (Handle 0x0000)
+	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service0090/char0093
+#### The below moved
+	00002ad1-0000-1000-8000-00805f9b34fb
+	Rower Data
+####
+[DEL] Descriptor (Handle 0x0000)
+	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service0090/char0096/desc0098
+	00002902-0000-1000-8000-00805f9b34fb
+	Client Characteristic Configuration
+[DEL] Characteristic (Handle 0x0000)
+	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service0090/char0096
+	00002ad9-0000-1000-8000-00805f9b34fb
+	Fitness Machine Control Point
+[DEL] Descriptor (Handle 0x0000)
+	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service0090/char0099/desc009b
+	00002902-0000-1000-8000-00805f9b34fb
+	Client Characteristic Configuration
+[DEL] Characteristic (Handle 0x0000)
+	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service0090/char0099
+	00002ada-0000-1000-8000-00805f9b34fb
+	Fitness Machine Status
+[DEL] Primary Service (Handle 0x0000)
+	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service0090
+	00001826-0000-1000-8000-00805f9b34fb
+	Fitness Machine
+[DEL] Descriptor (Handle 0x0000)
+	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service00b0/char00b1/desc00b3
+	00002902-0000-1000-8000-00805f9b34fb
+	Client Characteristic Configuration
+[DEL] Characteristic (Handle 0x0000)
+	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service00b0/char00b1
+	00002a19-0000-1000-8000-00805f9b34fb
+	Battery Level
+[DEL] Primary Service (Handle 0x0000)
+	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service00b0
+	0000180f-0000-1000-8000-00805f9b34fb
+	Battery Service

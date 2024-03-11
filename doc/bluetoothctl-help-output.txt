@@ -49,6 +49,10 @@
 	IEEE 11073-20601 Regulatory Cert. Data List
 
 
+[DEL] Primary Service (Handle 0x0000)
+	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service0050
+	49535343-fe7d-4ae5-8fa9-9fafd205e455
+	Vendor specific
 [DEL] Descriptor (Handle 0x0000)
 	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service0050/char0051/desc0053
 	00002902-0000-1000-8000-00805f9b34fb
@@ -69,10 +73,12 @@
 	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service0050/char0056
 	49535343-4c8a-39b3-2f49-511cff073b7e
 	Vendor specific
+
+
 [DEL] Primary Service (Handle 0x0000)
-	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service0050
-	49535343-fe7d-4ae5-8fa9-9fafd205e455
-	Vendor specific
+	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service0070
+	0000180d-0000-1000-8000-00805f9b34fb
+	Heart Rate
 [DEL] Descriptor (Handle 0x0000)
 	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service0070/char0071/desc0073
 	00002902-0000-1000-8000-00805f9b34fb
@@ -81,10 +87,12 @@
 	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service0070/char0071
 	00002a37-0000-1000-8000-00805f9b34fb
 	Heart Rate Measurement
+
+
 [DEL] Primary Service (Handle 0x0000)
-	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service0070
-	0000180d-0000-1000-8000-00805f9b34fb
-	Heart Rate
+	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service0090
+	00001826-0000-1000-8000-00805f9b34fb
+	Fitness Machine
 [DEL] Characteristic (Handle 0x0000)
 	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service0090/char0091
 	00002acc-0000-1000-8000-00805f9b34fb
@@ -113,10 +121,13 @@
 	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service0090/char0099
 	00002ada-0000-1000-8000-00805f9b34fb
 	Fitness Machine Status
+
+
+
 [DEL] Primary Service (Handle 0x0000)
-	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service0090
-	00001826-0000-1000-8000-00805f9b34fb
-	Fitness Machine
+	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service00b0
+	0000180f-0000-1000-8000-00805f9b34fb
+	Battery Service
 [DEL] Descriptor (Handle 0x0000)
 	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service00b0/char00b1/desc00b3
 	00002902-0000-1000-8000-00805f9b34fb
@@ -125,7 +136,3 @@
 	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service00b0/char00b1
 	00002a19-0000-1000-8000-00805f9b34fb
 	Battery Level
-[DEL] Primary Service (Handle 0x0000)
-	/org/bluez/hci0/dev_60_8A_10_51_DE_5F/service00b0
-	0000180f-0000-1000-8000-00805f9b34fb
-	Battery Service

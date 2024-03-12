@@ -3,6 +3,8 @@ package com.ironbird
 import com.welie.blessed.*
 import java.util.*
 
+//https://gist.github.com/sam016/4abe921b5a9ee27f67b3686910293026
+
 private enum class BluetoothService(val uuid: UUID) {
     DEVICE_INFORMATION(UUID.fromString("0000180a-0000-1000-8000-00805f9b34fb")),
     GATT_PROFILE(UUID.fromString("00001801-0000-1000-8000-00805f9b34fb")),
@@ -15,37 +17,73 @@ private enum class BluetoothService(val uuid: UUID) {
         fun fromUUID(uuid: UUID): BluetoothService? {
             return entries.firstOrNull { it.uuid == uuid }
         }
+
+        fun nameFromUUID(uuid: UUID): String {
+            return BluetoothService.fromUUID(uuid)?.name ?: uuid.toString()
+        }
+
     }
 }
 
-private enum class BluetoothCharacteristics(val service:BluetoothService, val uuid: UUID) {
-    MODEL_NUMBER(BluetoothService.DEVICE_INFORMATION, UUID.fromString("00002a24-0000-1000-8000-00805f9b34fb")),
-    SERIAL_NUMBER(BluetoothService.DEVICE_INFORMATION, UUID.fromString("00002a25-0000-1000-8000-00805f9b34fb")),
-    FIRMWARE_REVISION(BluetoothService.DEVICE_INFORMATION, UUID.fromString("00002a26-0000-1000-8000-00805f9b34fb")),
-    HARDWARE_REVISION(BluetoothService.DEVICE_INFORMATION, UUID.fromString("00002a27-0000-1000-8000-00805f9b34fb")),
-    SOFTWARE_REVISION(BluetoothService.DEVICE_INFORMATION, UUID.fromString("00002a28-0000-1000-8000-00805f9b34fb")),
-    MANUFACTURER_NAME(BluetoothService.DEVICE_INFORMATION, UUID.fromString("00002a29-0000-1000-8000-00805f9b34fb")),
+private enum class BluetoothCharacteristics(val uuid: UUID) {
+    MODEL_NUMBER(UUID.fromString("00002a24-0000-1000-8000-00805f9b34fb")),
+    SERIAL_NUMBER(UUID.fromString("00002a25-0000-1000-8000-00805f9b34fb")),
+    FIRMWARE_REVISION(UUID.fromString("00002a26-0000-1000-8000-00805f9b34fb")),
+    HARDWARE_REVISION(UUID.fromString("00002a27-0000-1000-8000-00805f9b34fb")),
+    SOFTWARE_REVISION(UUID.fromString("00002a28-0000-1000-8000-00805f9b34fb")),
+    MANUFACTURER_NAME(UUID.fromString("00002a29-0000-1000-8000-00805f9b34fb")),
+    SYSTEM_ID(UUID.fromString("00002a23-0000-1000-8000-00805f9b34fb")),
+    IEEE_11073_20601_REGULATORY_CERTIFICATION_DATA_LIST(UUID.fromString("00002a2a-0000-1000-8000-00805f9b34fb")),
 
-    BATTERY_LEVEL(BluetoothService.BATTERY, UUID.fromString("00002a19-0000-1000-8000-00805f9b34fb")),
+    BATTERY_LEVEL(UUID.fromString("00002a19-0000-1000-8000-00805f9b34fb")),
 
-    HEART_RATE_MEASUREMENT(BluetoothService.HEART_RATE, UUID.fromString("00002a37-0000-1000-8000-00805f9b34fb")),
+    HEART_RATE_MEASUREMENT(UUID.fromString("00002a37-0000-1000-8000-00805f9b34fb")),
 
-    ROWER_DATA(BluetoothService.FITNESS_MACHINE, UUID.fromString("00002ad1-0000-1000-8000-00805f9b34fb")),
-    FITNESS_MACHINE_STATUS(BluetoothService.FITNESS_MACHINE, UUID.fromString("00002ada-0000-1000-8000-00805f9b34fb"));
+    ROWER_DATA(UUID.fromString("00002ad1-0000-1000-8000-00805f9b34fb")),
+    FITNESS_MACHINE_STATUS(UUID.fromString("00002ada-0000-1000-8000-00805f9b34fb")),
+    FITNESS_MACHINE_FEATURE(UUID.fromString("00002acc-0000-1000-8000-00805f9b34fb")),
+    FITNESS_MACHINE_CONTROL_POINT(UUID.fromString("00002ad9-0000-1000-8000-00805f9b34fb"));
+
+
 
     companion object {
         fun fromUUID(uuid: UUID): BluetoothCharacteristics? {
             return entries.firstOrNull { it.uuid == uuid }
         }
+
+        fun nameFromUUID(uuid: UUID): String {
+            return BluetoothCharacteristics.fromUUID(uuid)?.name ?: uuid.toString()
+        }
+
     }
 }
 
-private enum class BluetoothDescriptors(val characteristics: BluetoothCharacteristics, val uuid: UUID) {
+private enum class BluetoothDescriptors(val uuid: UUID) {
+
+    CHARACTERISTIC_EXTENDED_PROPERTIES(UUID.fromString("00002900-0000-1000-8000-00805f9b34fb")),
+    CHARACTERISTIC_USER_DESCRIPTION(UUID.fromString("00002901-0000-1000-8000-00805f9b34fb")),
+    CLIENT_CHARACTERISTIC_CONFIGURATION(UUID.fromString("00002902-0000-1000-8000-00805f9b34fb")),
+    SERVER_CHARACTERISTIC_CONFIGURATION(UUID.fromString("00002903-0000-1000-8000-00805f9b34fb")),
+    CHARACTERISTIC_PRESENTATION_FORMAT(UUID.fromString("00002904-0000-1000-8000-00805f9b34fb")),
+    CHARACTERISTIC_AGGREGATE_FORMAT(UUID.fromString("00002905-0000-1000-8000-00805f9b34fb")),
+    VALID_RANGE(UUID.fromString("00002906-0000-1000-8000-00805f9b34fb")),
+    EXTERNAL_REPORT_REFERENCE(UUID.fromString("00002907-0000-1000-8000-00805f9b34fb")),
+    REPORT_REFERENCE(UUID.fromString("00002908-0000-1000-8000-00805f9b34fb")),
+    NUMBER_OF_DIGITALS(UUID.fromString("00002909-0000-1000-8000-00805f9b34fb")),
+    VALUE_TRIGGER_SETTING(UUID.fromString("0000290a-0000-1000-8000-00805f9b34fb")),
+    ENVIRONMENTAL_SENSING_CONFIGURATION(UUID.fromString("0000290b-0000-1000-8000-00805f9b34fb")),
+    ENVIRONMENTAL_SENSING_MEASUREMENT(UUID.fromString("0000290c-0000-1000-8000-00805f9b34fb")),
+    ENVIRONMENTAL_SENSING_TRIGGER_SETTING(UUID.fromString("0000290d-0000-1000-8000-00805f9b34fb")),
+    TIME_TRIGGER_SETTING(UUID.fromString("0000290e-0000-1000-8000-00805f9b34fb"))
     ;
 
     companion object {
         fun fromUUID(uuid: UUID): BluetoothDescriptors? {
             return entries.firstOrNull { it.uuid == uuid }
+        }
+
+        fun nameFromUUID(uuid: UUID): String {
+            return fromUUID(uuid)?.name ?: uuid.toString()
         }
     }
 
@@ -57,16 +95,16 @@ private class S4PeripheralCallBack: BluetoothPeripheralCallback() {
         println("onServicesDiscovered")
 
         services.forEach { service ->
-            val serviceName = BluetoothService.fromUUID(service.uuid)?.name ?: service.uuid
+            val serviceName = BluetoothService.nameFromUUID(service.uuid)
             println("   -> Discovered service $serviceName")
 
             service.characteristics.forEach { characteristic ->
-                val btCharacteristic = BluetoothCharacteristics.fromUUID(characteristic.uuid)
-                val characteristicName = btCharacteristic?.name ?: characteristic.uuid
+
+                val characteristicName = BluetoothCharacteristics.nameFromUUID(characteristic.uuid)
                 println("      > Service $serviceName has characteristic $characteristicName... Reading...")
 
                 characteristic.descriptors.forEach { descriptor ->
-                    val descriptorName = BluetoothDescriptors.fromUUID(descriptor.uuid)?.name ?: descriptor.uuid
+                    val descriptorName = BluetoothDescriptors.nameFromUUID(descriptor.uuid)
                     println("         > Characteristic $characteristicName has descriptor $descriptorName")
                     peripheral.readDescriptor(descriptor)
                 }
@@ -84,7 +122,7 @@ private class S4PeripheralCallBack: BluetoothPeripheralCallback() {
         characteristic: BluetoothGattCharacteristic,
         status: BluetoothCommandStatus
     ) {
-        val characteristicName = BluetoothCharacteristics.fromUUID(characteristic.uuid)?.name ?: characteristic.uuid
+        val characteristicName = BluetoothCharacteristics.nameFromUUID(characteristic.uuid)
         println("onNotificationStateUpdate [$characteristicName] = ${status.name}")
     }
 
@@ -95,13 +133,13 @@ private class S4PeripheralCallBack: BluetoothPeripheralCallback() {
         status: BluetoothCommandStatus
     ) {
         val serviceName = if (characteristic.service != null)
-            BluetoothService.fromUUID(characteristic.service!!.uuid)?.name ?: characteristic.uuid
+            BluetoothService.nameFromUUID(characteristic.service!!.uuid)
         else
             "NO_SERVICE"
 
-        val characteristicName = BluetoothCharacteristics.fromUUID(characteristic.uuid)?.name ?: characteristic.uuid
+        val characteristicName = BluetoothCharacteristics.nameFromUUID(characteristic.uuid)
         val parser = BluetoothBytesParser(value)
-        println("onCharacteristicUpdate ${peripheral.name}::$serviceName::$characteristicName = ${parser.getStringValue(0)}")
+        println("onCharacteristicUpdate ${peripheral.name}::$serviceName::$characteristicName = ${parser.getStringValue(0)}::${value.contentToString()}")
     }
 
     override fun onCharacteristicWrite(
@@ -119,8 +157,7 @@ private class S4PeripheralCallBack: BluetoothPeripheralCallback() {
         descriptor: BluetoothGattDescriptor,
         status: BluetoothCommandStatus
     ) {
-        val parser = BluetoothBytesParser(value)
-        println("onDescriptorRead ${descriptor.uuid}::${parser.getStringValue(0)}")
+        println("onDescriptorRead ${BluetoothDescriptors.nameFromUUID(descriptor.uuid)}::${value.contentToString()}")
     }
 
     override fun onDescriptorWrite(

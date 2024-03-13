@@ -137,9 +137,31 @@ private class S4PeripheralCallBack: BluetoothPeripheralCallback() {
         else
             "NO_SERVICE"
 
-        val characteristicName = BluetoothCharacteristics.nameFromUUID(characteristic.uuid)
-        val parser = BluetoothBytesParser(value)
-        println("onCharacteristicUpdate ${peripheral.name}::$serviceName::$characteristicName = ${parser.getStringValue(0)}::${value.contentToString()}")
+        if (characteristic.uuid == BluetoothCharacteristics.ROWER_DATA.uuid) {
+            val rowerData = RowerData(value)
+            println(
+                "| ${rowerData.strokeCount ?: "NO strokeCount"} | " +
+                "${rowerData.strokeRate ?: "NO strokeRate"} | " +
+                //"${rowerData.averageStrokeRate ?: "NO averageStrokeRate"} | " +
+                "${rowerData.totalDistance ?: "NO totalDistance"} | " +
+                "${rowerData.instantaneousPace ?: "NO instantaneousPace"} | " +
+                //"${rowerData.averagePace ?: "NO averagePace"} | " +
+                "${rowerData.instantaneousPower ?: "NO instantaneousPower"} |" +
+                //" ${rowerData.averagePower ?: "NO averagePower"} | " +
+                //"${rowerData.resistanceLevel ?: "NO resistanceLevel"} | " +
+                "${rowerData.totalEnergy ?: "NO totalEnergy"} | " +
+                "${rowerData.energyPerHour ?: "NO energyPerHour"} | " +
+                "${rowerData.energyPerMinute ?: "NO energyPerMinute"} | " +
+                "${rowerData.heartRate ?: "NO heartRate"} | " +
+                //"${rowerData.metabolicEquivalent ?: "NO metabolicEquivalent"} | " +
+                "${rowerData.elapsedTime ?: "NO elapsedTime"} | "
+                //"${rowerData.remainingTime ?: "NO remainingTime"} |"
+            )
+        } else if (characteristic.uuid != BluetoothCharacteristics.HEART_RATE_MEASUREMENT.uuid) {
+            val characteristicName = BluetoothCharacteristics.nameFromUUID(characteristic.uuid)
+            val parser = BluetoothBytesParser(value)
+            println("onCharacteristicUpdate ${peripheral.name}::$serviceName::$characteristicName = ${parser.getStringValue(0)}::${value.contentToString()}")
+        }
     }
 
     override fun onCharacteristicWrite(
@@ -241,9 +263,11 @@ class BluetoothManager : BluetoothCentralManagerCallback() {
     }
 
     fun disconnect() {
+        bluetoothCentral.stopScan()
         bluetoothCentral.connectedPeripherals.forEach { peripheral ->
             bluetoothCentral.cancelConnection(peripheral)
         }
+        bluetoothCentral.shutdown()
     }
 
 

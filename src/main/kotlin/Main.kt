@@ -2,8 +2,12 @@
 
 package com.ironbird
 
+
 fun main(args: Array<String>) {
     println("Hello World!")
+
+//    val rowerData = RowerData(byteArrayOf(44, 11, 52, 12, 0, 98, 0, 0, -1, -1, 0, 0, 3, 0, -18, 5, 25, 0, 104, 1))
+//    println(rowerData.toString())
 
     var bluetoothManager : BluetoothManager? = null
 

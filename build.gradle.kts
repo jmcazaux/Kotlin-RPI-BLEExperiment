@@ -21,8 +21,7 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     implementation("ch.qos.logback:logback-core:+")
     implementation("ch.qos.logback:logback-classic:+")
-    implementation("com.github.weliem.blessed-bluez:blessed:0.61")
-
+    implementation("com.github.weliem.blessed-bluez:blessed:0.62")
 }
 
 tasks.test {

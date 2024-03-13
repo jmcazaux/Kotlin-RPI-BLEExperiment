@@ -27,3 +27,4 @@ Tested on branch `blessed-bluez`:
 - ✅ Can discover services
 - ✅ Succeeded reading characteristics value (tested with string values only, but seems to work in principle)
 - ✅ Succeeded getting notifications on subscribed characteristics.
+- ✅ Succeeded to extract rower data from the characteristic value.
